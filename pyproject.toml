@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "clifford"
+version = "0.1.0"
+description = "Testing the potential for LLM-powered search to interrogate public government comms records"
+authors = ["EH (n.10)"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain = {extras = ["llms"], version = "^0.0.243"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
