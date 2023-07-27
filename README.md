@@ -12,6 +12,14 @@ cd clifford
 
 poetry install
 poetry shell
+
+# Compile all poetry.lock file
+poetry update
+
+cp .env.sample .env
+
+# run app
+streamlit run clifford/frontend/frontend_chat.py 
 ```
 
 ## Use
