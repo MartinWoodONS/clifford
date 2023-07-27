@@ -11,31 +11,30 @@ from example_lc_enrich import LLMWrapper
 
 
 EMBED_MODEL = "sentence-transformers/all-mpnet-base-v2"
-DB_DIR = "data/db"
-SOURCE_DIR = "texts"
+DB_DIR = "../data/db"
+SOURCE_DIR = "../data/processed"
 
 
 # Set smaller number of tokens to limit how long it spends hallucinating if it does
-llm = LLMWrapper(max_new_tokens=20)
+llm = LLMWrapper(model="google/flan-t5-xl", max_new_tokens=20)
 
 
 # %%
-# LOAD DOCS INCLUDING ADDING METADATA
-# HIDDEN DEPENDENCY, REQUIRES PACKAGE jq FOR READING JSON
-# HIDDEN BUG, UNLESS YOU SPECIFY content_key, medatada doesn't load
-
 def metadata_func(record: dict, metadata: dict) -> dict:
     """ Helper, instructs on how to fetch metadata """
-    metadata["title"] = record.get("title")
-    metadata["date"] = record.get("date")
+    metadata["file"] = record.get("file")
+    metadata["date"] = llm.query(
+        question="What date was this email received?",
+        context=record.get("message")[:300]
+    )
     metadata["people"] = llm.query(
-        question="List all the people mentioned in this document.",
-        context=record.get("text")[:300]
+        question="Who is mentioned in this document?  List all the names you can find, separated by ';'.",
+        context=record.get("message")[:300]
     )
     return metadata
 
 json_loader_kwargs = {"jq_schema": ".",
-                      "content_key": "text",
+                      "content_key": "message",
                       "metadata_func": metadata_func}
 
 loader = DirectoryLoader(
@@ -52,13 +51,13 @@ len(docs)
 
 # %%
 # OPTIONAL, SPLIT DOCUMENT
-text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=1000,
-            chunk_overlap=20,
-            length_function=len,
-        )
+# text_splitter = RecursiveCharacterTextSplitter(
+#             chunk_size=1000,
+#             chunk_overlap=20,
+#             length_function=len,
+#         )
 
-docs = text_splitter.split_documents(docs)
+# docs = text_splitter.split_documents(docs)
 
 # %%
 # CREATE THE DOCUMENT DATABASE WITH EMBEDDINGS
@@ -74,6 +73,9 @@ else:
 # %%
 # SEARCH FOR A RELEVANT DOCUMENT
 # Lower "distance" == greater similarity
-query = "Who referred to the weather as Global Boiling?"
+query = "Mark Scott"
 result = db.similarity_search_with_score(query=query, k=5)
 
+print(result)
+
+# %%
