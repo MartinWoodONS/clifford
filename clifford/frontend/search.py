@@ -54,7 +54,7 @@ if "past" not in st.session_state:
 
 df = pd.DataFrame({
     'source': [
-        'tim.belden@someorg.com',
+        'sand.belter@someorg.com',
         'phillip.screwdriver@someorg.com',
     ],
     'date': [
