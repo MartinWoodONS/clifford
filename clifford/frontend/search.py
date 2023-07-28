@@ -60,7 +60,7 @@ df = pd.DataFrame({
     'date': [
         '14 May 2001',
         '23 Oct 2001',
-    ]
+    ],
     'text_summary': [
         'Related financial forecasts.',
         'Details of staff and positions in the office that made the forecasts.'
