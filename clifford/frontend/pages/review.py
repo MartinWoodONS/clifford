@@ -41,11 +41,12 @@ if st.button('summarise emails'):
                     ## TODO fill in the rest of the data
                     "tags": {
                         "topic" : "Charity",
-                        "urgency" : "Green",
-                        "action": 0,
-                        "response": 0
+                        "urgency" : "Amber",
+                        "action": "respond",
+                        "triage_to": "team 1"
                     },
-                     "header": "Email header 1"
+                    "previous": ["Email 1 - El Paso", "Email 2 - Calculation of index" ],
+                    "Newsfeed": ["BBC ...", "STV ..."]
                 }
             ], f)
     else:
@@ -57,11 +58,12 @@ if st.button('summarise emails'):
                 ## TODO fill in the rest of the data
                 "tags": {
                     "topic" : "Charity",
-                    "urgency" : "Green",
-                    "action": 0,
-                    "response": 0
+                    "urgency" : "Red",
+                    "action": "Set up meeting",
+                    "triage_to": "team 1"
                 },
-                    "header": "Email header 1"
+                "previous": ["Email 1 - El Paso \n", "Email 2 - Calculation of index \n" ],
+                "Newsfeed": ["BBC ...", "STV ..."]
             }
         )
         with open(summarised_emails,'w') as f:
@@ -74,6 +76,15 @@ def display_email_summarisation_from_json(file_path):
         data = json.load(f)
 
     df = pd.json_normalize(data)
+
+    df = df.rename(
+        columns={
+            "tags.topic": "Topic",
+            "tags.urgency": "Urgency",
+            "tags.action": "Action",
+            "tags.triage_to": "Triage To",
+        }
+    )
     
     gd = GridOptionsBuilder.from_dataframe(df)
     gd.configure_selection(selection_mode='multiple', use_checkbox=True)
@@ -81,12 +92,13 @@ def display_email_summarisation_from_json(file_path):
 
     gd.configure_columns("summerisation",wrapText = True)
     gd.configure_columns("summerisation",autoHeight = True)
+    gd.configure_columns("previous",wrapText = True)
+    gd.configure_columns("previous",autoHeight = True)
     gridoptions = gd.build()
 
     grid_table = AgGrid(
         df, 
         height=600,
-
         gridOptions=gridoptions,
         update_mode=GridUpdateMode.SELECTION_CHANGED,
         columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW

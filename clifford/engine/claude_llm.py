@@ -69,10 +69,11 @@ class ClaudeLLM:
         Please provide: high level summary in plain English including relevant context 
         from web searches (bullet pointed) and relevant actions in a project plan table 
         including action holder and timeframes.
+        Please do not generate a markdown table for the actions but 
         Additionally, please include the following appendices: appendix 1: relevant media 
         coverage including sources, date, summary and relevance to the email.
-        Appendix 2: relevant academic articles presented in a table article title, 
-        authors, publication year, journal and summary (present appendices in tables) for 
+        Appendix 2: relevant academic articles presented in a list article title, 
+        authors, publication year, journal and summary (present appendices in lists) for 
         the following email: {email}
 
         Summarisation:"""

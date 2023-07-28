@@ -19,7 +19,7 @@ poetry update
 cp .env.sample .env
 
 # run app
-streamlit run clifford/frontend/frontend_chat.py 
+streamlit run clifford/frontend/search.py 
 ```
 
 ## Use
