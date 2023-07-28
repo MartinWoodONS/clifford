@@ -619,13 +619,13 @@ test = ["coverage", "flake8 (==2.1.0)", "gevent", "mock", "nose2", "pyyaml", "to
 
 [[package]]
 name = "clarifai"
-version = "9.6.0"
+version = "9.6.2"
 description = "Clarifai Python Utilities"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "clarifai-9.6.0-py3-none-any.whl", hash = "sha256:12e65c605c2f5ef59287e9220a85c0610af7e3b9fbabe3880eab8a9d952492d9"},
-    {file = "clarifai-9.6.0.tar.gz", hash = "sha256:acc2ea4c7951023565caf4b910076b03ff668620ba547e97cc08d2f87215ffcf"},
+    {file = "clarifai-9.6.2-py3-none-any.whl", hash = "sha256:19cde07d81b45401a555ba2bfa63751a4aa4cce90e6bd987230764b9cf71adfc"},
+    {file = "clarifai-9.6.2.tar.gz", hash = "sha256:72bdf6520db77c385b8798da86b9dd44bf9736b3585a9f3bf29a4627f536a528"},
 ]
 
 [package.dependencies]
@@ -635,13 +635,13 @@ tritonclient = "2.34.0"
 
 [[package]]
 name = "clarifai-grpc"
-version = "9.6.0"
+version = "9.6.1"
 description = "Clarifai gRPC API Client"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "clarifai-grpc-9.6.0.tar.gz", hash = "sha256:12d33dd6df367a8baf7370ac496db69224349c6791d9ee75c1ffb481aa444589"},
-    {file = "clarifai_grpc-9.6.0-py3-none-any.whl", hash = "sha256:2c58a431879f4d63fb8db83ea5f1a46cefc4d8407b1de9ea20640758e37e37e3"},
+    {file = "clarifai-grpc-9.6.1.tar.gz", hash = "sha256:faa29af1d3768d850a72cdcad2560573c9ecf9f34b00c4d00045624caf4b5404"},
+    {file = "clarifai_grpc-9.6.1-py3-none-any.whl", hash = "sha256:4f9a2e98985eb788be01aa1773a43afcebbb9d72a2049ad15b21da48dffe6fe1"},
 ]
 
 [package.dependencies]
@@ -862,13 +862,13 @@ dev = ["flake8", "hypothesis", "ipython", "mypy (>=0.710)", "portray", "pytest (
 
 [[package]]
 name = "datasets"
-version = "2.14.0"
+version = "2.14.1"
 description = "HuggingFace community-driven open-source library of datasets"
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "datasets-2.14.0-py3-none-any.whl", hash = "sha256:93081cc3d9d0ce860c81f950a3ba23d24704da2eacbe2722092ef4f6ae0ada96"},
-    {file = "datasets-2.14.0.tar.gz", hash = "sha256:1bb3d1c992a593949a8d3e445b358ac1db4ead00e6619ea2e5e7b6dfc222dde1"},
+    {file = "datasets-2.14.1-py3-none-any.whl", hash = "sha256:23058350cced65f5573266fc58b3f2ad6944959cd6c45495a852fe0d595592bf"},
+    {file = "datasets-2.14.1.tar.gz", hash = "sha256:11a20e8229c94ef60346ea0bf87ca71a97e0af16339a396a6d8efe8b1c056c6b"},
 ]
 
 [package.dependencies]
@@ -890,8 +890,8 @@ xxhash = "*"
 apache-beam = ["apache-beam (>=2.26.0,<2.44.0)"]
 audio = ["librosa", "soundfile (>=0.12.1)"]
 benchmarks = ["tensorflow (==2.12.0)", "torch (==2.0.1)", "transformers (==4.30.1)"]
-dev = ["Pillow (>=6.2.1)", "absl-py", "apache-beam (>=2.26.0,<2.44.0)", "black (>=23.1,<24.0)", "elasticsearch (<8.0.0)", "faiss-cpu (>=1.6.4)", "joblib (<1.3.0)", "joblibspark", "librosa", "lz4", "py7zr", "pyspark (>=3.4)", "pytest", "pytest-datadir", "pytest-xdist", "pyyaml (>=5.3.1)", "rarfile (>=4.0)", "ruff (>=0.0.241)", "s3fs", "s3fs (>=2021.11.1)", "soundfile (>=0.12.1)", "sqlalchemy (<2.0.0)", "tensorflow (>=2.3,!=2.6.0,!=2.6.1)", "tensorflow-macos", "tiktoken", "torch", "transformers", "zstandard"]
-docs = ["s3fs"]
+dev = ["Pillow (>=6.2.1)", "absl-py", "apache-beam (>=2.26.0,<2.44.0)", "black (>=23.1,<24.0)", "elasticsearch (<8.0.0)", "faiss-cpu (>=1.6.4)", "joblib (<1.3.0)", "joblibspark", "librosa", "lz4", "py7zr", "pyspark (>=3.4)", "pytest", "pytest-datadir", "pytest-xdist", "pyyaml (>=5.3.1)", "rarfile (>=4.0)", "ruff (>=0.0.241)", "s3fs", "s3fs (>=2021.11.1)", "soundfile (>=0.12.1)", "sqlalchemy (<2.0.0)", "tensorflow (>=2.2.0,!=2.6.0,!=2.6.1)", "tensorflow (>=2.3,!=2.6.0,!=2.6.1)", "tensorflow-macos", "tiktoken", "torch", "transformers", "zstandard"]
+docs = ["s3fs", "tensorflow (>=2.2.0,!=2.6.0,!=2.6.1)", "tensorflow-macos", "torch", "transformers"]
 jax = ["jax (>=0.2.8,!=0.3.2,<=0.3.25)", "jaxlib (>=0.1.65,<=0.3.25)"]
 metrics-tests = ["Werkzeug (>=1.0.1)", "accelerate", "bert-score (>=0.3.6)", "jiwer", "langdetect", "mauve-text", "nltk", "requests-file (>=1.5.1)", "rouge-score", "sacrebleu", "sacremoses", "scikit-learn", "scipy", "sentencepiece", "seqeval", "six (>=1.15.0,<1.16.0)", "spacy (>=3.0.0)", "texttable (>=1.6.3)", "tldextract", "tldextract (>=3.1.0)", "toml (>=0.10.1)", "typer (<0.5.0)"]
 quality = ["black (>=23.1,<24.0)", "pyyaml (>=5.3.1)", "ruff (>=0.0.241)"]
@@ -1592,13 +1592,13 @@ text-helpers = ["chardet (>=5.1.0,<6.0.0)"]
 
 [[package]]
 name = "langsmith"
-version = "0.0.14"
+version = "0.0.15"
 description = "Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langsmith-0.0.14-py3-none-any.whl", hash = "sha256:d3c367fa72b88a226919e6c902e34d83791efd1250f284e84cf17eacc37558b9"},
-    {file = "langsmith-0.0.14.tar.gz", hash = "sha256:146379f4ed8a7a28794c52b74009d40875371080a16a87bba95c410160b00b92"},
+    {file = "langsmith-0.0.15-py3-none-any.whl", hash = "sha256:8382de23d469bb8062a5eb8b7fc9971068981c92233db63a3c25ccf4f85aaf23"},
+    {file = "langsmith-0.0.15.tar.gz", hash = "sha256:c5e3d2cc50a2f6f5c4aaf3f8998a25f85dd94b3cd016bc4999be51000c933b3f"},
 ]
 
 [package.dependencies]
@@ -2255,12 +2255,12 @@ files = [
 
 [[package]]
 name = "optimum"
-version = "1.10.0"
+version = "1.10.1"
 description = "Optimum Library is an extension of the Hugging Face Transformers library, providing a framework to integrate third-party libraries from Hardware Partners and interface with their specific functionality."
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "optimum-1.10.0.tar.gz", hash = "sha256:cc80371dcd38c1748aeb60d6b7b300e81726e95e2c4ccc0e4e53e62a4e36801a"},
+    {file = "optimum-1.10.1.tar.gz", hash = "sha256:2a28cf44455dcf47573aecb2dd91a15be5f9783922abd0d4e5a0c1980c72e552"},
 ]
 
 [package.dependencies]
@@ -2283,14 +2283,14 @@ exporters-tf = ["h5py", "numpy (<1.24.0)", "onnx", "onnxruntime", "tensorflow (>
 furiosa = ["optimum-furiosa"]
 graphcore = ["optimum-graphcore"]
 habana = ["optimum-habana", "transformers (<4.29.0)"]
-intel = ["optimum-intel"]
-neural-compressor = ["optimum-intel[neural-compressor]"]
+intel = ["optimum-intel (>=1.10.1)"]
+neural-compressor = ["optimum-intel[neural-compressor] (>=1.9.2)"]
 neuron = ["optimum-neuron[neuron]"]
 neuronx = ["optimum-neuron[neuronx]"]
-nncf = ["optimum-intel[nncf]"]
+nncf = ["optimum-intel[nncf] (>=1.10.1)"]
 onnxruntime = ["datasets (>=1.2.1)", "evaluate", "onnx", "onnxruntime (>=1.9.0)", "protobuf (>=3.20.1)"]
 onnxruntime-gpu = ["datasets (>=1.2.1)", "evaluate", "onnx", "onnxruntime-gpu (>=1.9.0)", "protobuf (>=3.20.1)"]
-openvino = ["optimum-intel[openvino]"]
+openvino = ["optimum-intel[openvino] (>=1.10.1)"]
 quality = ["black (>=23.1,<24.0)", "ruff (>=0.0.241,<=0.0.259)"]
 tests = ["Pillow", "diffusers (>=0.17.0)", "einops", "invisible-watermark", "parameterized", "pytest", "pytest-xdist", "requests", "sacremoses", "torchaudio", "torchvision"]
 
@@ -2838,6 +2838,31 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
+
+[[package]]
+name = "python-decouple"
+version = "3.8"
+description = "Strict separation of settings from code."
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-decouple-3.8.tar.gz", hash = "sha256:ba6e2657d4f376ecc46f77a3a615e058d93ba5e465c01bbe57289bfb7cce680f"},
+    {file = "python_decouple-3.8-py3-none-any.whl", hash = "sha256:d0d45340815b25f4de59c974b855bb38d03151d81b037d9e3f463b0c9f8cbd66"},
+]
+
+[[package]]
+name = "python-dotenv"
+version = "1.0.0"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python-dotenv-1.0.0.tar.gz", hash = "sha256:a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba"},
+    {file = "python_dotenv-1.0.0-py3-none-any.whl", hash = "sha256:f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
 
 [[package]]
 name = "python-json-logger"
@@ -3704,6 +3729,22 @@ watchdog = {version = ">=2.1.5", markers = "platform_system != \"Darwin\""}
 snowflake = ["snowflake-snowpark-python"]
 
 [[package]]
+name = "streamlit-aggrid"
+version = "0.3.4.post3"
+description = "Streamlit component implementation of ag-grid"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "streamlit-aggrid-0.3.4.post3.tar.gz", hash = "sha256:0cb9332199e7735289a673efabc913e1a3466cc188bc025bec2c50c32ab1989a"},
+    {file = "streamlit_aggrid-0.3.4.post3-py3-none-any.whl", hash = "sha256:b909117eb90cfdb855b1c74e694e9ec97554c101baaafb7339eaf885d1f4e49c"},
+]
+
+[package.dependencies]
+pandas = ">=1.2"
+python-decouple = ">=3.6,<4.0"
+streamlit = ">=0.87.0"
+
+[[package]]
 name = "streamlit-chat"
 version = "0.1.1"
 description = "A streamlit component, to make chatbots"
@@ -4523,4 +4564,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "032a310b1e3861243f2c05111cced1abe28ca41fd150310e9401e58705ee5baf"
+content-hash = "d45bbde4b3761bd44466376c1eb699af36c9ac17f2865e72f97d9b73fe1c594e"

@@ -14,8 +14,8 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 # from langchain.schema import AIMessage, HumanMessage, SystemMessage
 
 
-# from config.settings import ANTHROPIC_API_KEY
-os.environ["ANTHROPIC_API_KEY"] = ""#os.environ.get('ANTHROPIC_API_KEY')
+from config.settings import ANTHROPIC_API_KEY
+#os.environ["ANTHROPIC_API_KEY"] = ""#os.environ.get('ANTHROPIC_API_KEY')
 
 class ClaudeLLM:
     """
@@ -38,7 +38,8 @@ class ClaudeLLM:
         # n_ctx = 512 * 2
 
         self.llm = ChatAnthropic(
-            callback_manager=callback_manager
+            callback_manager=callback_manager,
+            anthropic_api_key=ANTHROPIC_API_KEY,
         )
         
         self.setup()
@@ -64,6 +65,25 @@ class ClaudeLLM:
 
         prompt = PromptTemplate(input_variables=["history", "human_input"], template=template)
 
+        summarise_template= """
+        Please provide: high level summary in plain English including relevant context 
+        from web searches (bullet pointed) and relevant actions in a project plan table 
+        including action holder and timeframes.
+        Additionally, please include the following appendices: appendix 1: relevant media 
+        coverage including sources, date, summary and relevance to the email.
+        Appendix 2: relevant academic articles presented in a table article title, 
+        authors, publication year, journal and summary (present appendices in tables) for 
+        the following email: {email}
+
+        Summarisation:"""
+        summarise_prompt = PromptTemplate(input_variables=["email"], template=summarise_template)
+
+        self.summarise_chain = LLMChain(
+            llm=self.llm,
+            prompt=summarise_prompt,
+            verbose=True,
+        )
+
         self.first_chain = LLMChain(
             llm=self.llm,
             prompt=prompt,
@@ -73,10 +93,13 @@ class ClaudeLLM:
 
         return
     
-    def get_chain(self):
+    def get_chain(self, chain_type = None):
         """ Gets required LLM chain
         
         TODO pass keys for different chains
         """
+        if chain_type == "summarise":
+            return self.summarise_chain
+
         return self.first_chain
 
