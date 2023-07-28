@@ -9,6 +9,14 @@ from clifford.engine.claude_llm import ClaudeLLM
 
 llm_runner = ClaudeLLM()
 summarised_emails = 'data/summarised/example_emails.json'
+
+#TODO update button to get todays emails and summarise them!
+#TODO update chain to seperate extracting actions from prompt
+#TODO update chain to generate tags & labels
+
+#TODO Update graphics and next page big box (with print option)
+st.set_page_config(layout="wide")
+
 # Initialize session state variables
 if "summary_chain" not in st.session_state:
     st.session_state["summary_chain"] = llm_runner.get_chain("summarise")
@@ -69,28 +77,21 @@ def display_email_summarisation_from_json(file_path):
     
     gd = GridOptionsBuilder.from_dataframe(df)
     gd.configure_selection(selection_mode='multiple', use_checkbox=True)
+    gd.configure_default_column(groupable=True)
+
     gd.configure_columns("summerisation",wrapText = True)
     gd.configure_columns("summerisation",autoHeight = True)
     gridoptions = gd.build()
 
-    MIN_HEIGHT = 50
-    MAX_HEIGHT = 800
-    ROW_HEIGHT = 60
-
-    MIN_WIDTH = 50
-    MAX_WIDTH = 800
-    ROW_WIDTH = 60
-
     grid_table = AgGrid(
         df, 
-        height=min(MIN_HEIGHT + len(df) * ROW_HEIGHT, MAX_HEIGHT), 
-        width=min(MIN_WIDTH + df.shape[1] * MAX_WIDTH, ROW_WIDTH), 
+        height=600,
+
         gridOptions=gridoptions,
         update_mode=GridUpdateMode.SELECTION_CHANGED,
         columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW
         )
 
-    st.write('## Selected')
     selected_row = grid_table["selected_rows"]
     
     if st.button('Send selected'):
