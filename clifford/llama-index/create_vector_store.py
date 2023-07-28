@@ -1,4 +1,4 @@
-from llama_index.llms import OpenAI
+from llama_index.llms import OpenAI, Anthropic
 from llama_index import VectorStoreIndex, ServiceContext, set_global_service_context
 
 from llama_index.node_parser import SimpleNodeParser
@@ -10,9 +10,15 @@ from llama_index.node_parser.extractors import (
     MetadataFeatureExtractor,
 )
 from llama_index.langchain_helpers.text_splitter import TokenTextSplitter
+from llama_index.llm_predictor.base import LLMPredictor
+from dotenv import load_dotenv
+
+load_dotenv()  # Load vars fro .env into environment
 
 # Apply default settings to use across funcs
-llm = OpenAI(temperature=0, model="text-davinci-003", max_tokens=512)
+# llm = OpenAI(temperature=0, model="text-davinci-003", max_tokens=512)
+llm = Anthropic(model="claude-2", temperature=0, max_tokens=512)
+llm_predictor = LLMPredictor(llm=llm)
 service_context = ServiceContext.from_defaults(embed_model="local", llm=llm)
 set_global_service_context(service_context)
 
@@ -44,9 +50,9 @@ def parse_nodes_from_docs(docs: list):
     # Define which extractor will be called and args to pass
     metadata_extractor = MetadataExtractor(
         extractors=[
-            QuestionsAnsweredExtractor(questions=1),
-            SummaryExtractor(summaries=["prev", "self"]),
-            KeywordExtractor(keywords=3),
+            QuestionsAnsweredExtractor(questions=1, llm_predictor=llm_predictor),
+            SummaryExtractor(summaries=["prev", "self"], llm_predictor=llm_predictor),
+            KeywordExtractor(keywords=3, llm_predictor=llm_predictor),
             # CustomExtractor()
         ],
     )
