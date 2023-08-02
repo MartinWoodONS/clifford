@@ -15,6 +15,10 @@ llama-cpp-python = "^0.1.77"
 pandas = "^2.0.3"
 python-dotenv = "^1.0.0"
 streamlit-aggrid = "^0.3.4.post3"
+llama-index = "^0.7.13"
+ipykernel = "^6.25.0"
+sentence-transformers = "^2.2.2"
+pyvis = "^0.3.2"
 
 
 [build-system]
