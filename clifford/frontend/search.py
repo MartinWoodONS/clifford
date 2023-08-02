@@ -53,13 +53,17 @@ if "past" not in st.session_state:
 
 
 df = pd.DataFrame({
-    'col1': [
-        'Items1',
-        'item 2',
+    'source': [
+        'sand.belter@someorg.com',
+        'phillip.screwdriver@someorg.com',
     ],
-    'col2': [
-        'description 1',
-        'description 2',
+    'date': [
+        '14 May 2001',
+        '23 Oct 2001',
+    ],
+    'text_summary': [
+        'Related financial forecasts.',
+        'Details of staff and positions in the office that made the forecasts.'
     ]
 })
 search_term = st.text_input(
